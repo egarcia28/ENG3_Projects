@@ -237,7 +237,7 @@ while True:
     print(f"Speed: {RPM}rpm   Setpoint: {Setpoint}rpm")
 ```
 
-![image](https://github.com/jhelmke45/projects/assets/113116262/bb2fa0b8-52b0-482e-bef2-db6ec160f178)
+![Capture](https://github.com/egarcia28/ENG3_Projects/assets/112961319/e7d222a4-b857-4db4-8cec-800cddeeae7e)
 _Wiring diagram_
 
 ### Evidence
