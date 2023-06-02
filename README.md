@@ -246,4 +246,8 @@ _Wiring diagram_
 
 _CAD renderings of the base plates, and then of the full assembly, complete with imported parts_
 
+![IMG_2032](https://github.com/egarcia28/ENG3_Projects/assets/112961319/8a83e18d-ae34-4eb0-8e69-f5aa2e79beba)
+![IMG_2033](https://github.com/egarcia28/ENG3_Projects/assets/112961319/944db096-0a03-4d94-93b7-d35d2a84806a)
+
+_Our physical version of the box_
 ### Reflection
