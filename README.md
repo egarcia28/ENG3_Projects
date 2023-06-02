@@ -125,17 +125,28 @@ In this project, we tried to make a simple spinning wheel adjust its own speed t
 ### Code and Wiring
 
 ```python
-import rotaryio
-import board
-import time
-import digitalio
-from analogio import AnalogOut
-import pwmio
-import simpleio
+from adafruit_motor import motor
 from lcd.lcd import LCD
 from lcd.i2c_pcf8574_interface import I2CPCF8574Interface
+from PID_CPY import PID
+lcdPower = digitalio.DigitalInOut(board.D9)
+lcdPower.direction = digitalio.Direction.INPUT
+lcdPower.pull = digitalio.Pull.DOWN
+
+# Keep the I2C protocol from running until the LCD has been turned on
+# You need to flip the switch on the breadboard to do this.
+while lcdPower.value is False:
+    print("still sleeping")
+    time.sleep(0.1)
+
+# Time to start up the LCD!
+time.sleep(1)
+print(lcdPower.value)
+print("running")
 
 i2c = board.I2C()
+lcd = LCD(I2CPCF8574Interface(i2c, 0x27), num_rows=2, num_cols=16)
+
 encoder = rotaryio.IncrementalEncoder(board.D3, board.D2)
 last_position = 0
 button = digitalio.DigitalInOut(board.D4)
@@ -146,20 +157,32 @@ photoI = digitalio.DigitalInOut(board.D7)
 photoI.direction = digitalio.Direction.INPUT
 photoI.pull = digitalio.Pull.UP
 
-motor = pwmio.PWMOut(board.D8,duty_cycle = 65535,frequency=5000)
-
+motor = AnalogOut(board.A0)
+pid = PID(100, 10, 50, setpoint = 100)
+pid.output_limits = 23000, 50000
 prevState = True
 prevTime = 0
-
-lcd = LCD(I2CPCF8574Interface(i2c, 0x3f), num_rows=2, num_cols=16)
 
 maxSpeed = 100000   # constant, in rpm
 interval = 10   # number of rpms to change by
 trueSpeed = 0
 
-kp, ki, kd = 6, 0.01, 0   #CONSTANTS
 lastTime, Output, Setpoint, errSum, lastErr = 0, 0, 0, 0, 0
 motorPower = 0
+
+# Variables for counting interrupts and RPM
+intTime =0
+interrupts =0
+RPM = 0
+lastVal = False
+previous_time = time.monotonic()
+rpmCheckTime = 0.5
+rpmCheckState = True
+photoVal = False           
+oldPhotoVal = False # Used to make sure we only count the first loop when interupt is broken
+time1 =0
+time2 =0
+RPM = 0 
 
 while True:
     # rotary encoder code
@@ -174,37 +197,44 @@ while True:
             Setpoint = Setpoint - interval
 
         lcd.set_cursor_pos(0,0)
-        lcd.print(Setpoint)
-       
+        lcd.print(f"{Setpoint}")
+        pid.setpoint = Setpoint 
     last_position = position
 
-    firstTime = time.monotonic()
-    intCount = 0
-    while time.monotonic() - firstTime <= .1:
-        if photoI.value != prevState:
-            intCount = intCount + 1
-            prevState = not prevState
-    trueSpeed = 6000 * (intCount / 12)
+    photoVal = photoI.value 
+
+    # RPM math and calculations
+    if photoVal and (oldPhotoVal == False):
+        oldPhotoVal = True
+        interrupts += 1
+        
+        if interrupts % 2 == 0:
+            time2= time.monotonic()
+            RPM = 1.0/((time2-time1))*60
+            print(f"{photoI.value} {interrupts} Rpm: {RPM} 1")
+            time1 = time2
+        elif interrupts % 2 == 1:    # first 
+            time2 = time.monotonic()
+            RPM = 1.0/((time2-time1))*60
+            print(f"{photoI.value} {interrupts} Rpm: {RPM} 2")
+            time1 = time2
+    if not photoVal:
+        oldPhotoVal  = False
 
     # PID math
-    now = time.monotonic()
-    timeChange = now - lastTime
-    error = Setpoint - trueSpeed
-    errSum = errSum + (error - timeChange)
-    dErr = (error - lastErr) / timeChange
-    Output = kp * error + ki * errSum + kd * dErr
-    lastErr = error
-    lastTime = now
+    motorPower = int(pid(RPM))
 
-    motorPower = simpleio.map_range(Output, 0, maxSpeed, 0, 65535)
+ 
     print(f"Motor Power: {motorPower}")
     motor.value = motorPower
 
     # LCD output code
     lcd.set_cursor_pos(0,0)
     lcd.print(f"Setpoint: {Setpoint}rpm")
-    lcd.set_cursor_pos(0,1)
-    lcd.print(f"Speed: {trueSpeed}rpm")
+    lcd.set_cursor_pos(1,0)
+    lcd.print(f"Speed: {RPM}rpm")
+    
+    print(f"Speed: {RPM}rpm   Setpoint: {Setpoint}rpm")
 ```
 
 ![image](https://github.com/jhelmke45/projects/assets/113116262/bb2fa0b8-52b0-482e-bef2-db6ec160f178)
