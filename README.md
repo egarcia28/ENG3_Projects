@@ -258,6 +258,7 @@ _Wiring diagram_
 ### Evidence
 
 ![image](https://github.com/jhelmke45/projects/assets/113116262/bb1f8f0d-5e8e-4dea-b077-9fb3ce952a4d)![image](https://github.com/jhelmke45/projects/assets/113116262/180ad6be-af71-4ff6-ad34-25a8d53ccf93)
+
 _CAD renderings of the base plates, and then of the full assembly, complete with imported parts_
 
 
