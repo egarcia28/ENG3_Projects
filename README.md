@@ -122,6 +122,21 @@ Overall, I think that this project was pretty successful. It moves well in 3 dim
 
 In this project,we aimed to create a self-adjusting spinning wheel using a rotary encoder and photointerrupter. We implemented the PID control algorithm to regulate its speed towards a setpoint. We chose a simple PID box and wheel for several reasons, first, we wanted a simple project we could ensure would be done my the deadline, second we wanted to give ourselves as much time for PID tuning as possible.
 
+Materials used:
+
+1 lcd screen and backpack
+1 rotary encoder
+6v battery pack
+2 switches
+Metro
+standoffs
+breadboard
+wires
+4-40 bolts, nuts, and locknuts
+lasercutter and 3D printer
+led
+dc motor
+
 ### Code and Wiring
 
 ```python
@@ -254,4 +269,6 @@ _Our physical version of the box_
 
 At this point our project is "functional", but due to it's many problems, it doesn't work as well or as smoooth as I would like. Although we ran into many problems along the way, I still feel like I learned some new valuable information. For example, when we went to plug in the lcd, we came accross a problem where the lcd's 5v logic pins drew too much power and prevented the metro from properly initializing since the metros run their logic on 3.3v. This [repo](https://github.com/Helmstk1/CircuitPython#how-to-fix-the-lcd-power-issue-with-metro-m4-boards) from Mr.H goes into depth on the fix, but in summary, the fix involves adding a switch to your wiring and a few lines to your code that prevent the metro from running the i2c code until after it has properly booted. Another problem we ran into was issues with specific components and their wiring. The solution to this was in my opinion very cool, we created many, small test suites for each component we suspected had issues, and used only the code that ran those components in order to eliminate all other potential error.
 
-In terms of CAD, we ran into very few problems, and overall I was very pleased with how the design turned out. The standoff based design allowed for incredibly easy modification and iteration, something I took advantage of when I forgot that we needed a battery pack. One major issue we faced when designing/building was wriring, due to our vertical design, much of our wirimng was compressed and shoved in hard to reach areas. If I were to do this project again, I would make sure that all of the components were on the same vertical plane as the metro and breadboard  
+In terms of CAD, we ran into very few problems, and overall I was very pleased with how the design turned out. The standoff based design allowed for incredibly easy modification and iteration, something I took advantage of when I forgot that we needed a battery pack. One major issue we faced when designing/building was wriring, due to our vertical design, much of our wirimng was compressed and shoved in hard to reach areas. If I were to do this project again, I would make sure that all of the components were on the same vertical plane as the metro and breadboard.
+
+As a whole, I am pretty satisfied in our project, although most of the satisfaction comes from the things I learned and figured out in the process, less from the final product. Even though I know I could have done better I am still happy that we were able to get a somewhat working product, as well as learn the fundemental concepts surrounding PID and PID tuning.
