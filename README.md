@@ -258,13 +258,14 @@ _Wiring diagram_
 ### Evidence
 
 ![image](https://github.com/jhelmke45/projects/assets/113116262/bb1f8f0d-5e8e-4dea-b077-9fb3ce952a4d)![image](https://github.com/jhelmke45/projects/assets/113116262/180ad6be-af71-4ff6-ad34-25a8d53ccf93)
-
 _CAD renderings of the base plates, and then of the full assembly, complete with imported parts_
+
+
 
 ![IMG_2032](https://github.com/egarcia28/ENG3_Projects/assets/112961319/8a83e18d-ae34-4eb0-8e69-f5aa2e79beba)
 ![IMG_2033](https://github.com/egarcia28/ENG3_Projects/assets/112961319/944db096-0a03-4d94-93b7-d35d2a84806a)
-
 _Our physical version of the box_
+
 ### Reflection
 
 At this point our project is "functional", but due to it's many problems, it doesn't work as well or as smoooth as I would like. Although we ran into many problems along the way, I still feel like I learned some new valuable information. For example, when we went to plug in the lcd, we came accross a problem where the lcd's 5v logic pins drew too much power and prevented the metro from properly initializing since the metros run their logic on 3.3v. This [repo](https://github.com/Helmstk1/CircuitPython#how-to-fix-the-lcd-power-issue-with-metro-m4-boards) from Mr.H goes into depth on the fix, but in summary, the fix involves adding a switch to your wiring and a few lines to your code that prevent the metro from running the i2c code until after it has properly booted. Another problem we ran into was issues with specific components and their wiring. The solution to this was in my opinion very cool, we created many, small test suites for each component we suspected had issues, and used only the code that ran those components in order to eliminate all other potential error.
