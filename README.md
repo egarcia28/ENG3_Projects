@@ -137,6 +137,12 @@ Materials used:
 - led
 - dc motor
 
+### Planning
+ 
+Link to our planning document [here](https://docs.google.com/document/d/1_5pHvHOThR4zLVl37LQGPIIBqNMTqXxpK_LaQb-RbFw/edit#).
+We tried to leave as much time for PID tuning and troubleshooting as possible.
+
+
 ### Code and Wiring
 
 ```python
