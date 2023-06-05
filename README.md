@@ -122,6 +122,11 @@ Overall, I think that this project was pretty successful. It moves well in 3 dim
 
 In this project, we aimed to create a self-adjusting spinning wheel using a rotary encoder and photointerrupter. We implemented the PID control algorithm to regulate its speed towards a setpoint. We chose a simple PID box and wheel in order to make the project as simple as possible so that we could do it within the short timeframe we were given.
 
+### Planning
+ 
+Link to our planning document [here](https://docs.google.com/document/d/1_5pHvHOThR4zLVl37LQGPIIBqNMTqXxpK_LaQb-RbFw/edit#).
+We tried to leave as much time for PID tuning and troubleshooting as possible.
+
 Materials used:
 
 - 1 lcd screen and backpack
@@ -136,12 +141,6 @@ Materials used:
 - lasercutter and 3D printer
 - led
 - dc motor
-
-### Planning
- 
-Link to our planning document [here](https://docs.google.com/document/d/1_5pHvHOThR4zLVl37LQGPIIBqNMTqXxpK_LaQb-RbFw/edit#).
-We tried to leave as much time for PID tuning and troubleshooting as possible.
-
 
 ### Code and Wiring
 
