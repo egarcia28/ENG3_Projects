@@ -257,14 +257,14 @@ _Wiring diagram_
 
 ### Evidence
 
-<img src="https://github.com/jhelmke45/projects/assets/113116262/bb1f8f0d-5e8e-4dea-b077-9fb3ce952a4d" height="400">
-<img src="https://github.com/jhelmke45/projects/assets/113116262/180ad6be-af71-4ff6-ad34-25a8d53ccf93" height="400">
+<img src="https://github.com/jhelmke45/projects/assets/113116262/bb1f8f0d-5e8e-4dea-b077-9fb3ce952a4d" height="300">
+<img src="https://github.com/jhelmke45/projects/assets/113116262/180ad6be-af71-4ff6-ad34-25a8d53ccf93" height="300">
 
 _CAD renderings of the base plates, and then of the full assembly, complete with imported parts_
 
 
-<img src="https://github.com/egarcia28/ENG3_Projects/assets/112961319/8a83e18d-ae34-4eb0-8e69-f5aa2e79beba" height="400">
-<img src="https://github.com/egarcia28/ENG3_Projects/assets/112961319/944db096-0a03-4d94-93b7-d35d2a84806a" height="400">
+<img src="https://github.com/egarcia28/ENG3_Projects/assets/112961319/8a83e18d-ae34-4eb0-8e69-f5aa2e79beba" height="300">
+<img src="https://github.com/egarcia28/ENG3_Projects/assets/112961319/944db096-0a03-4d94-93b7-d35d2a84806a" height="300">
 
 _Our physical version of the box_
 
